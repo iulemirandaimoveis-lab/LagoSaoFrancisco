@@ -1,0 +1,12 @@
+{
+  "name": "lago-blueprint-site",
+  "private": true,
+  "type": "module",
+  "description": "Gerador do site leitor do blueprint (public/index.html) a partir dos .md do repositório.",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "marked": "18.0.6"
+  }
+}
