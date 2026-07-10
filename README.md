@@ -2,7 +2,33 @@
 
 > **Blueprint Oficial de Produto** · Documento diretor para o desenvolvimento da plataforma digital de experiências da Fazenda Lago São Francisco (Garanhuns / Agreste — Pernambuco).
 
-Este repositório **não contém código de aplicação**. Ele contém o **planejamento estratégico, de produto, de experiência e de arquitetura** que orientará toda a construção da plataforma nos próximos anos. Ele é a fonte única de verdade (*single source of truth*) para as equipes de **produto, design, engenharia, marketing, revenue e gestão**.
+Este repositório contém o **planejamento estratégico, de produto, de experiência e de arquitetura** (pasta `docs/`) que orienta a construção da plataforma, e a **implementação da Fase 1 (MVP)** dessa plataforma (pasta `src/`, Next.js). O planejamento é a fonte única de verdade (*single source of truth*) para as equipes de **produto, design, engenharia, marketing, revenue e gestão**; o código evolui em cima dele.
+
+## A aplicação (Next.js)
+
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build && npm run start   # build de produção
+npm run lint
+npm run typecheck
+```
+
+Stack: Next.js (App Router) + TypeScript + Tailwind CSS + Framer Motion, conforme o
+[Capítulo 13 — Arquitetura Técnica](docs/13-arquitetura-tecnica.md). Implementado nesta fase: home
+cinematográfica, institucional, hospedagem (hub + páginas por suíte), restaurante Dom Dina (cardápio
+digital + reserva de mesa), experiências (hub filtrável + páginas), casamentos (pacotes + simulador de
+orçamento), museu, motor de reservas com calendário e precificação dinâmica, contato/FAQ, páginas
+legais, SEO técnico (metadata, JSON-LD, sitemap, robots, OG images) e acessibilidade WCAG 2.2 AA.
+
+Como o backend de produção (Supabase, gateway de pagamento, PMS) ainda não foi provisionado neste
+ambiente, os endpoints de reserva (`/api/reservas`, `/api/mesa`, `/api/experiencias`, `/api/casamentos`,
+`/api/contato`) validam e registram as solicitações, prontos para a integração real descrita no
+Capítulo 13 — não há cobrança nem persistência real ainda. Toda fotografia/vídeo é um placeholder
+gráfico (gradientes + linhas) até a produção audiovisual real entrar, conforme o Capítulo 01.9.
+
+O leitor navegável do blueprint (gerado a partir de `docs/`) continua disponível em
+[`/blueprint.html`](public/blueprint.html) — ver `tools/site/`.
 
 ## Premissa central
 
@@ -44,4 +70,5 @@ Este documento foi elaborado sob a ótica integrada de um conselho: CEO, CPO, CT
 
 ## Status
 
-**Versão 1.0 — Blueprint fundacional.** Documento vivo; alterações via Pull Request com revisão do CPO.
+**Blueprint v1.0** (fundacional, documento vivo) + **implementação Fase 1/MVP em andamento** no
+código de `src/`. Alterações ao blueprint via Pull Request com revisão do CPO.

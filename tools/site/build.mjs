@@ -1,4 +1,6 @@
-// Gera o site leitor do blueprint (public/index.html) a partir dos .md do repositório.
+// Gera o site leitor do blueprint (public/blueprint.html) a partir dos .md do repositório.
+// A aplicação real (Next.js) vive em src/app — este leitor fica disponível em /blueprint.html
+// como referência histórica do planejamento, fora da navegação principal (noindex).
 // Uso: cd tools/site && npm install && node build.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -8,7 +10,7 @@ import { marked } from 'marked';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..', '..');
 const DOCS = path.join(ROOT, 'docs');
-const OUT = path.join(ROOT, 'public', 'index.html');
+const OUT = path.join(ROOT, 'public', 'blueprint.html');
 
 marked.setOptions({ gfm: true, breaks: false });
 
