@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/ui/logo";
 import { MobileMenu } from "./mobile-menu";
 
 export function Header() {
@@ -45,12 +46,8 @@ export function Header() {
         )}
       >
         <div className="mx-auto flex max-w-8xl items-center justify-between px-6 py-4 md:px-10 lg:px-14">
-          <Link
-            href="/"
-            className="font-serif text-xl font-semibold tracking-tight text-paper"
-            onClick={() => setMenuOpen(false)}
-          >
-            Lago São Francisco
+          <Link href="/" onClick={() => setMenuOpen(false)} aria-label="Fazenda Lago São Francisco — página inicial">
+            <Logo priority className="h-8 sm:h-9" />
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegação principal">
