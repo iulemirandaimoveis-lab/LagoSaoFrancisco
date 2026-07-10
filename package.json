@@ -1,0 +1,35 @@
+{
+  "name": "lago-sao-francisco",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Plataforma digital da Fazenda Lago São Francisco — Next.js App Router.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "framer-motion": "12.42.2",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.6.0",
+    "lucide-react": "1.24.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "6.0.3",
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "tailwindcss": "4.3.2",
+    "@tailwindcss/postcss": "4.3.2",
+    "postcss": "8.5.16",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.2.10",
+    "@eslint/eslintrc": "3.3.5"
+  }
+}
