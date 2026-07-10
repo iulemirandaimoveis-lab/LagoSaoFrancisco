@@ -4,13 +4,14 @@ import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/ui/container";
 import { NewsletterForm } from "./newsletter-form";
 import { InstagramIcon, FacebookIcon } from "@/components/ui/social-icons";
+import { Logo } from "@/components/ui/logo";
 
 export function Footer() {
   return (
     <footer className="bg-forest-950 text-paper/80">
       <Container className="grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-4">
-          <p className="font-serif text-2xl font-semibold text-paper">Fazenda Lago<br />São Francisco</p>
+          <Logo className="h-11" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed">{siteConfig.tagline}</p>
           <div className="mt-6 flex items-center gap-2 text-sm">
             <MapPin size={16} className="text-gold-500" />
