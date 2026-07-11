@@ -18,14 +18,39 @@ Stack: Next.js (App Router) + TypeScript + Tailwind CSS + Framer Motion, conform
 [Capítulo 13 — Arquitetura Técnica](docs/13-arquitetura-tecnica.md). Implementado nesta fase: home
 cinematográfica, institucional, hospedagem (hub + páginas por suíte), restaurante Dom Dina (cardápio
 digital + reserva de mesa), experiências (hub filtrável + páginas), casamentos (pacotes + simulador de
-orçamento), museu, motor de reservas com calendário e precificação dinâmica, contato/FAQ, páginas
-legais, SEO técnico (metadata, JSON-LD, sitemap, robots, OG images) e acessibilidade WCAG 2.2 AA.
+orçamento), museu, eventos com venda de ingresso e checkout próprio (ver abaixo), motor de reservas
+com calendário e precificação dinâmica, contato/FAQ, páginas legais, SEO técnico (metadata, JSON-LD,
+sitemap, robots, OG images) e acessibilidade WCAG 2.2 AA.
 
-Como o backend de produção (Supabase, gateway de pagamento, PMS) ainda não foi provisionado neste
-ambiente, os endpoints de reserva (`/api/reservas`, `/api/mesa`, `/api/experiencias`, `/api/casamentos`,
-`/api/contato`) validam e registram as solicitações, prontos para a integração real descrita no
-Capítulo 13 — não há cobrança nem persistência real ainda. Toda fotografia/vídeo é um placeholder
-gráfico (gradientes + linhas) até a produção audiovisual real entrar, conforme o Capítulo 01.9.
+Como o backend de produção (Supabase, PMS) ainda não foi provisionado neste ambiente, os endpoints de
+reserva (`/api/reservas`, `/api/mesa`, `/api/experiencias`, `/api/casamentos`, `/api/contato`) validam
+e registram as solicitações, prontos para a integração real descrita no Capítulo 13 — não há
+persistência real ainda. Toda fotografia/vídeo é um placeholder gráfico (gradientes + linhas) até a
+produção audiovisual real entrar, conforme o Capítulo 01.9.
+
+### Eventos — venda de ingresso própria (substitui a Sympla)
+
+`/eventos` é a solução própria de bilheteria, no lugar da Sympla: página de evento com todos os tipos
+de ingresso, carrinho com seletor de quantidade e checkout via **Mercado Pago** (Pix, cartão em até
+12x ou boleto) — sem a taxa de serviço que a Sympla cobra do comprador.
+
+- `src/content/events.ts` — dados do evento e catálogo de ingressos (preço, descrição, limite por pedido).
+- `src/components/eventos/ticket-selector.tsx` — carrinho + formulário do comprador.
+- `src/app/api/eventos/checkout/route.ts` — valida o pedido, recalcula o total no servidor (nunca confia
+  no preço enviado pelo cliente) e cria a preferência de pagamento no Mercado Pago.
+- `src/app/api/eventos/webhook/route.ts` — recebe a notificação de pagamento da MP e confirma o status
+  direto na API deles (a fonte de verdade nunca é o payload do webhook em si).
+- `src/app/eventos/[slug]/confirmacao/page.tsx` — página de retorno (aprovado / pendente / recusado).
+
+Para ativar cobranças reais, defina `MERCADOPAGO_ACCESS_TOKEN` (veja `.env.example`) com uma credencial
+gerada em [mercadopago.com.br/developers/panel/app](https://www.mercadopago.com.br/developers/panel/app) —
+use a credencial de teste (`TEST-...`) para validar o fluxo ponta a ponta com os
+[cartões de teste da MP](https://www.mercadopago.com.br/developers/pt/docs/checkout-api/additional-content/your-integrations/test/cards)
+e troque para a de produção (`APP_USR-...`) quando for cobrar de verdade. Sem essa variável configurada,
+o checkout responde 503 com uma mensagem clara, sem cobrar nada. Como o pedido ainda não é persistido em
+banco (Supabase não provisionado neste ambiente), a confirmação depende do e-mail que o próprio Mercado
+Pago envia ao comprador e do log do webhook — a persistência do pedido fica pronta para ligar assim que
+o Supabase entrar, no mesmo padrão dos outros endpoints acima.
 
 O leitor navegável do blueprint (gerado a partir de `docs/`) continua disponível em
 [`/blueprint.html`](public/blueprint.html) — ver `tools/site/`.

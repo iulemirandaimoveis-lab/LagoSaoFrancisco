@@ -31,6 +31,7 @@ export const siteConfig = {
     { label: "Experiências", href: "/experiencias" },
     { label: "Casamentos", href: "/casamentos" },
     { label: "Museu", href: "/museu" },
+    { label: "Eventos", href: "/eventos" },
   ],
   footerLinks: {
     descobrir: [

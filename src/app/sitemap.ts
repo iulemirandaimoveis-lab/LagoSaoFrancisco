@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 import { rooms } from "@/content/rooms";
 import { experiences } from "@/content/experiences";
+import { events } from "@/content/events";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -16,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/casamentos/pacotes",
     "/casamentos/orcamento",
     "/museu",
+    "/eventos",
     "/contato",
     "/politica-de-privacidade",
     "/termos",
@@ -42,6 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.6,
+    })),
+    ...events.map((event) => ({
+      url: `${siteConfig.url}/eventos/${event.slug}`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
     })),
   ];
 }
