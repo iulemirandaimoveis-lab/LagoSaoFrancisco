@@ -12,6 +12,8 @@ export type Experience = {
   priceUnit: "por pessoa" | "por grupo" | "por casal";
   schedule: string[];
   heroPalette: [string, string];
+  /** Foto real da experiência, quando disponível. */
+  image?: { src: string; alt: string };
 };
 
 export const experiences: Experience[] = [
@@ -30,6 +32,10 @@ export const experiences: Experience[] = [
     priceUnit: "por grupo",
     schedule: ["09:00", "10:30", "15:30", "17:00"],
     heroPalette: ["#4c636b", "#7d97a1"],
+    image: {
+      src: "/images/experiencias/pedalinho-cisnes.jpg",
+      alt: "Pedalinhos em formato de cisne atracados no embarcadouro do lago",
+    },
   },
   {
     slug: "caiaque",

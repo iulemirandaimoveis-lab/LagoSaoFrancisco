@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { PlaceholderArt } from "./placeholder-art";
 import { formatBRL } from "@/lib/utils";
@@ -11,6 +12,7 @@ export function EntityCard({
   palette,
   motif = "ripple",
   titleAs: Heading = "h3",
+  image,
 }: {
   href: string;
   title: string;
@@ -19,16 +21,30 @@ export function EntityCard({
   palette: [string, string];
   motif?: "ripple" | "topo" | "mist";
   titleAs?: "h2" | "h3";
+  /** Foto real, quando disponível. Sem isso, usa o PlaceholderArt padrão. */
+  image?: { src: string; alt: string };
 }) {
   return (
     <Link href={href} className="group block">
-      <div className="overflow-hidden rounded-2xl">
-        <PlaceholderArt
-          palette={palette}
-          motif={motif}
-          label={title}
-          className="aspect-[4/5] w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-        />
+      <div className="relative overflow-hidden rounded-2xl">
+        {image ? (
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+            />
+          </div>
+        ) : (
+          <PlaceholderArt
+            palette={palette}
+            motif={motif}
+            label={title}
+            className="aspect-[4/5] w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+          />
+        )}
       </div>
       <div className="mt-4 flex items-start justify-between gap-2">
         <div>
