@@ -1,10 +1,10 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { PlaceholderArt } from "@/components/ui/placeholder-art";
 
 export function HomeHero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -18,9 +18,17 @@ export function HomeHero() {
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[640px] overflow-hidden bg-forest-950">
       <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
-        <PlaceholderArt palette={["#0c1310", "#2a4334"]} motif="ripple" className="h-full w-full" />
+        <Image
+          src="/images/lago/hero-lago-panoramica.jpg"
+          alt="Vista panorâmica do lago da Fazenda Lago São Francisco ao entardecer, com o lodge à beira d'água"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
       </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/20 to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/35 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-transparent" />
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
@@ -30,7 +38,7 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-gold-300"
+          className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-gold-300 [text-shadow:0_1px_12px_rgba(0,0,0,0.5)]"
         >
           Garanhuns · Agreste pernambucano
         </motion.p>
@@ -38,7 +46,7 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="max-w-4xl text-balance-pretty font-serif text-5xl font-semibold leading-[1.05] text-paper sm:text-6xl md:text-7xl"
+          className="max-w-4xl text-balance-pretty font-serif text-5xl font-semibold leading-[1.05] tracking-tight text-paper [text-shadow:0_2px_24px_rgba(0,0,0,0.35)] sm:text-6xl md:text-7xl lg:text-[5.5rem]"
         >
           O refúgio de altitude à beira do lago
         </motion.h1>
@@ -46,7 +54,7 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 max-w-xl text-lg leading-relaxed text-paper/80"
+          className="mt-6 max-w-xl text-lg leading-relaxed text-paper/90 [text-shadow:0_1px_16px_rgba(0,0,0,0.4)]"
         >
           Gastronomia autoral, arte e hospitalidade de destino no ponto mais frio do Nordeste — onde a névoa
           sobe do lago e o tempo desacelera.

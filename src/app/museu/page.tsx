@@ -47,7 +47,7 @@ export default function MuseuPage() {
               {collection.eyebrow}
             </p>
             <h2
-              className={`mt-2 font-serif text-3xl font-semibold ${ci % 2 === 0 ? "text-ink" : "text-paper"}`}
+              className={`mt-2 font-serif text-3xl font-semibold tracking-tight ${ci % 2 === 0 ? "text-ink" : "text-paper"}`}
             >
               {collection.title}
             </h2>
