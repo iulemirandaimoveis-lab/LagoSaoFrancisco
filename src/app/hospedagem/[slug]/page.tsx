@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
 import { FinalCta } from "@/components/sections/final-cta";
@@ -63,11 +64,24 @@ export default async function RoomPage({ params }: { params: Promise<{ slug: str
             <div>
               <Reveal>
                 <div className="grid grid-cols-2 gap-3">
-                  <PlaceholderArt
-                    palette={room.heroPalette}
-                    className="col-span-2 aspect-[16/9] rounded-2xl"
-                    label={`${room.name} — vista principal`}
-                  />
+                  {room.image ? (
+                    <div className="relative col-span-2 aspect-[4/5] w-full overflow-hidden rounded-2xl">
+                      <Image
+                        src={room.image.src}
+                        alt={room.image.alt}
+                        fill
+                        priority
+                        sizes="(min-width: 1024px) 60vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <PlaceholderArt
+                      palette={room.heroPalette}
+                      className="col-span-2 aspect-[16/9] rounded-2xl"
+                      label={`${room.name} — vista principal`}
+                    />
+                  )}
                   <PlaceholderArt palette={room.heroPalette} motif="topo" className="aspect-square rounded-2xl" label={`${room.name} — detalhe`} />
                   <PlaceholderArt palette={room.heroPalette} motif="mist" className="aspect-square rounded-2xl" label={`${room.name} — varanda`} />
                 </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { Clock, Gauge, Users } from "lucide-react";
 import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
@@ -42,7 +43,13 @@ export default async function ExperiencePage({ params }: { params: Promise<{ slu
           <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <Reveal>
-                <PlaceholderArt palette={exp.heroPalette} motif="ripple" className="aspect-[16/9] w-full rounded-2xl" label={exp.name} />
+                {exp.image ? (
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
+                    <Image src={exp.image.src} alt={exp.image.alt} fill sizes="(min-width: 1024px) 60vw, 100vw" className="object-cover" />
+                  </div>
+                ) : (
+                  <PlaceholderArt palette={exp.heroPalette} motif="ripple" className="aspect-[16/9] w-full rounded-2xl" label={exp.name} />
+                )}
               </Reveal>
               <Reveal delay={0.1}>
                 <div className="mt-8 flex flex-wrap gap-6 text-sm text-ink-soft">

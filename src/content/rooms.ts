@@ -12,6 +12,8 @@ export type Room = {
   view: string;
   amenities: string[];
   heroPalette: [string, string];
+  /** Foto real da acomodação, quando disponível. */
+  image?: { src: string; alt: string };
 };
 
 export const rooms: Room[] = [
@@ -40,6 +42,10 @@ export const rooms: Room[] = [
       "Serviço de quarto",
     ],
     heroPalette: ["#1d2f25", "#3a5b46"],
+    image: {
+      src: "/images/hospedagem/suite-master-banheira.jpg",
+      alt: "Banheira de imersão em suíte com parede de pedra e teto de madeira",
+    },
   },
   {
     slug: "suite-familia",
@@ -90,6 +96,10 @@ export const rooms: Room[] = [
       "Cafeteira e chaleira",
     ],
     heroPalette: ["#4c636b", "#7d97a1"],
+    image: {
+      src: "/images/hospedagem/chale-cama-dossel.jpg",
+      alt: "Cama com dossel e cortinas brancas em quarto de madeira maciça",
+    },
   },
   {
     slug: "standard",
@@ -112,6 +122,10 @@ export const rooms: Room[] = [
       "Varanda compartilhada",
     ],
     heroPalette: ["#a35a3d", "#d9a48c"],
+    image: {
+      src: "/images/hospedagem/standard-quarto.jpg",
+      alt: "Quarto compacto com TV de parede e decoração industrial",
+    },
   },
 ];
 

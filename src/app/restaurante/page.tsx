@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageHero } from "@/components/sections/page-hero";
 import { FeatureSplit } from "@/components/sections/feature-split";
 import { ManifestoQuote } from "@/components/sections/manifesto-quote";
@@ -49,25 +50,36 @@ export default function RestaurantePage() {
       />
 
       <section className="bg-paper py-16 md:py-20">
-        <Container className="max-w-3xl text-center">
-          <Reveal>
-            <p className="text-lg leading-relaxed text-ink-soft">
-              Batizado em homenagem à matriarca da família, o Dom Dina nasceu na cozinha de casa e hoje
-              ocupa um salão envidraçado de frente para o lago. A cozinha trabalha com produtores da
-              região do Agreste — queijo coalho da serra, cordeiro local, peixe do próprio lago — revisitando
-              receitas afetivas com técnica contemporânea.
-            </p>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <Button href="/restaurante/cardapio" size="lg">
-                Ver cardápio digital
-              </Button>
-              <Button href="/restaurante/reservar-mesa" variant="secondary" size="lg">
-                Reservar mesa
-              </Button>
-            </div>
-          </Reveal>
+        <Container>
+          <div className="grid items-center gap-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
+            <Reveal>
+              <div className="relative aspect-[3/4] w-full overflow-hidden rounded-3xl">
+                <Image
+                  src="/images/restaurante/dom-dina-potes-barro.jpg"
+                  alt="Ensopado e creme de abóbora servidos em potes de barro na mesa do Dom Dina"
+                  fill
+                  sizes="(min-width: 768px) 35vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg leading-relaxed text-ink-soft">
+                Batizado em homenagem à matriarca da família, o Dom Dina nasceu na cozinha de casa e hoje
+                ocupa um salão envidraçado de frente para o lago. A cozinha trabalha com produtores da
+                região do Agreste — queijo coalho da serra, cordeiro local, peixe do próprio lago — revisitando
+                receitas afetivas com técnica contemporânea.
+              </p>
+              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                <Button href="/restaurante/cardapio" size="lg">
+                  Ver cardápio digital
+                </Button>
+                <Button href="/restaurante/reservar-mesa" variant="secondary" size="lg">
+                  Reservar mesa
+                </Button>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

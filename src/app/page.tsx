@@ -43,6 +43,7 @@ export default function HomePage() {
                   priceLabel={formatBRL(room.basePrice)}
                   palette={room.heroPalette}
                   motif="ripple"
+                  image={room.image}
                 />
               </Reveal>
             ))}
@@ -79,6 +80,7 @@ export default function HomePage() {
                   priceLabel={exp.price > 0 ? formatBRL(exp.price) : undefined}
                   palette={exp.heroPalette}
                   motif="mist"
+                  image={exp.image}
                 />
               </Reveal>
             ))}

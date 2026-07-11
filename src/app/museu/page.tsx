@@ -26,9 +26,24 @@ export default function MuseuPage() {
         }}
       />
 
-      <section className="bg-paper py-10">
+      <section className="bg-paper py-16 md:py-20">
         <Container>
-          <p className="max-w-3xl text-sm leading-relaxed text-ink-soft">{museumIntro.visita}</p>
+          <div className="grid items-center gap-10 md:grid-cols-[1fr_1.2fr] md:gap-16">
+            <Reveal>
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
+                <Image
+                  src="/images/museu/fachada-expolago.jpg"
+                  alt="Fachada em pedra do Expolago, com placa 'Expolago — Arte, Cultura e Exposição' no jardim de entrada"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="text-lg leading-relaxed text-ink-soft">{museumIntro.visita}</p>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

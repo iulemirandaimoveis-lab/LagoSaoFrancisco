@@ -37,6 +37,7 @@ export default function HospedagemPage() {
                   subtitle={`${room.bedConfig} · até ${room.maxAdults} adultos`}
                   priceLabel={formatBRL(room.basePrice)}
                   palette={room.heroPalette}
+                  image={room.image}
                 />
               </Reveal>
             ))}
