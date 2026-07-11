@@ -17,7 +17,7 @@ const sizes: Record<Size, string> = {
 };
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-wide transition-colors duration-300 whitespace-nowrap";
+  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide transition-colors duration-300 whitespace-nowrap";
 
 type LinkButtonProps = {
   href: string;

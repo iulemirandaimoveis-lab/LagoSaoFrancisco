@@ -41,7 +41,7 @@ export function FeatureSplit({
             <p className={cn("text-xs font-semibold uppercase tracking-[0.28em]", tone === "dark" ? "text-gold-500" : "text-gold-700")}>
               {eyebrow}
             </p>
-            <h2 className={cn("mt-3 text-balance-pretty font-serif text-3xl font-semibold leading-tight sm:text-4xl", tone === "dark" ? "text-paper" : "text-ink")}>
+            <h2 className={cn("mt-3 text-balance-pretty font-serif text-3xl font-semibold leading-tight tracking-tight sm:text-4xl", tone === "dark" ? "text-paper" : "text-ink")}>
               {title}
             </h2>
             <p className={cn("mt-4 text-base leading-relaxed", tone === "dark" ? "text-paper/70" : "text-ink-soft")}>
