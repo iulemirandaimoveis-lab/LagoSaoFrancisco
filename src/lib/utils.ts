@@ -13,6 +13,16 @@ export function formatBRL(value: number) {
   }).format(value);
 }
 
+/** Como formatBRL, mas preserva centavos (ex.: ingressos a R$ 17,50). */
+export function formatBRLCents(value: number) {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+}
+
 export function formatDatePt(date: Date) {
   return new Intl.DateTimeFormat("pt-BR", {
     day: "2-digit",
