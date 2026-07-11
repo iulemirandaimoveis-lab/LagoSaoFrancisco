@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/container";
 import { PlaceholderArt } from "@/components/ui/placeholder-art";
 
@@ -7,16 +8,23 @@ export function PageHero({
   description,
   palette,
   motif = "ripple",
+  image,
 }: {
   eyebrow: string;
   title: string;
   description?: string;
   palette: [string, string];
   motif?: "ripple" | "topo" | "mist";
+  /** Foto real opcional (ex.: acervo do museu). Sem isso, usa a composição gráfica padrão. */
+  image?: { src: string; alt: string };
 }) {
   return (
     <section className="relative flex h-[62svh] min-h-[420px] items-end overflow-hidden bg-forest-950 pb-16 pt-32">
-      <PlaceholderArt palette={palette} motif={motif} className="absolute inset-0" label={title} />
+      {image ? (
+        <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
+      ) : (
+        <PlaceholderArt palette={palette} motif={motif} className="absolute inset-0" label={title} />
+      )}
       <div className="absolute inset-0 bg-gradient-to-t from-forest-950 via-forest-950/30 to-black/10" />
       <Container className="relative">
         <p className="text-xs font-semibold uppercase tracking-[0.32em] text-gold-300">{eyebrow}</p>
